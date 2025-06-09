@@ -14,3 +14,11 @@ def relu_deriv(x):
 
 def softmax(x):
     exps = np.exp(x - np.max(x, axis=1, keepdims=True))
+    
+# loss function
+
+def cross_entropy(predictions, targets):
+    m = targets.shape[0]
+    log_likelihood = -np.log(predictions[range(m), targets])
+    loss = np.sum(log_likelihood) / m
+    return loss
